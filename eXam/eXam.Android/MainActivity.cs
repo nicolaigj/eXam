@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 namespace eXam.Droid
 {
@@ -18,6 +21,8 @@ namespace eXam.Droid
             base.OnCreate(bundle);
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             global::Xamarin.Forms.Forms.Init(this, bundle); LoadApplication(new App());
+
+            MobileCenter.Start("android =[Your app’s secret]",typeof(Analytics), typeof(Crashes));”
         }
     }
 }

@@ -10,6 +10,9 @@ using System.Text;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace eXam
@@ -60,6 +63,8 @@ namespace eXam
             var embeddedQuestions = JsonConvert.DeserializeObject<List<QuizQuestion>>(cachedQuestions);
             CurrentGame = new Game(embeddedQuestions);
             await fileHelper.SaveLocalFileAsync("cachedquestions.json", cachedQuestions);
+
+            MobileCenter.Start("android =[Your app’s secret]", typeof(Analytics), typeof(Crashes));
         }
 
 
